@@ -2,7 +2,7 @@
 
 **Um Portugal que nunca existiu, no ano 950.** Um cenário de campanha original para um RPG de mesa (Daggerheart™ Compatible), feito a partir das lendas portuguesas: mouras encantadas nas fontes, olharapos nas serras, afogados nas noites de cheia. Este repositório é o **site para os jogadores**: tudo o que precisam de saber para criar uma personagem e entrar no mundo, sem spoilers.
 
-🔗 **Site:** https://ruirodrigues-lab.github.io/Conspiracao-do-ducado/
+🔗 **Site:** https://conspiracao-do-ducado.netlify.app/
 
 ![O mapa do Ducado, desenhado a partir de coordenadas reais](docs/img/mapa-ducado.png)
 
@@ -34,7 +34,7 @@ A separação é uma regra do projeto: nada do material do mestre entra aqui.
 
 ## Destaques técnicos
 
-- **Site estático, sem frameworks.** HTML, CSS e JavaScript simples, servidos pelo GitHub Pages. Não há dependências nem passo de build no browser.
+- **Site estático, sem frameworks.** HTML, CSS e JavaScript simples, publicados pelo Netlify a partir deste repositório no GitHub. Não há dependências nem passo de build no browser.
 - **Gerador em Python (só biblioteca padrão).** `fonte/site.py` junta o texto de cada página com o cabeçalho, o menu e o rodapé comuns. Também constrói a página do mapa: os pinos, os cartões de cada lugar e as distâncias, calculadas a partir de uma só lista de rotas.
 - **Mapa desenhado por código a partir de coordenadas reais.** Cada lugar é guardado em latitude e longitude. Um script com Pillow converte as coordenadas para píxeis sobre um mapa-base da região. A conversão usa uma transformação afim ajustada por mínimos quadrados a seis cidades de controlo, mais uma correção por distância inversa para os pontos de controlo baterem certo. O mesmo script desenha as estradas romanas e as serras, e exporta a posição de cada lugar em percentagem (`fonte/posicoes.json`) para os pinos do site ficarem sempre alinhados com a imagem.
 - **Mapa interativo em JavaScript simples.** Tocar num pino mostra o lugar por baixo do mapa e guarda-o no endereço (`#lugar-…`), para se poder partilhar a ligação. Os filtros mostram só um tipo de lugar no mapa e na lista e levam à secção respetiva.
@@ -46,7 +46,7 @@ A separação é uma regra do projeto: nada do material do mestre entra aqui.
 ## Estrutura
 
 ```
-docs/                    o site publicado (GitHub Pages)
+docs/                    o site publicado (Netlify)
   index.html, mapa.html, regras.html, personagem.html, lendas.html, mesa.html
   estilo.css             tema e layout (editado diretamente)
   site.js                mapa clicável e filtros (editado diretamente)
@@ -69,17 +69,23 @@ Depois abre `http://localhost:8765`.
 
 1. Edita o texto em `fonte/paginas/`. As descrições dos lugares estão no dicionário `L` de `fonte/site.py`, e as rotas na lista `DIST`, que serve para a tabela e para as distâncias de cada lugar.
 2. Gera as páginas: `python -I fonte/site.py`.
-3. Vê no computador (acima) e envia para o GitHub.
+3. Vê no computador (acima) e envia para o GitHub; o Netlify publica sozinho.
 
 `estilo.css` e `site.js` editam-se diretamente em `docs/`.
 
 **Mapa:** a imagem e o `posicoes.json` são gerados por scripts que ficam fora deste repositório, porque também desenham os mapas do mestre. Quando um lugar muda, gera-se o mapa outra vez e depois as páginas.
 
-## Publicar no GitHub Pages
+## Publicar (Netlify)
 
-1. Envia esta pasta como raiz do repositório.
-2. No GitHub: **Settings → Pages → Build and deployment → Deploy from a branch**, ramo `main`, pasta **`/docs`**.
-3. O site fica em https://ruirodrigues-lab.github.io/Conspiracao-do-ducado/.
+O site está no ar em https://conspiracao-do-ducado.netlify.app/. O Netlify publica de novo sempre que o repositório no GitHub muda. As definições (Site configuration → Build & deploy) são:
+
+| Campo | Valor |
+|---|---|
+| Branch to deploy | `Locker` |
+| Build command | *(vazio: as páginas já vêm geradas)* |
+| Publish directory | `site-jogadores/docs` |
+
+O site não precisa de build no servidor: as páginas geram-se no computador com `fonte/site.py` e envia-se a pasta `docs/` já pronta.
 
 ## Licença (DPCGL 2.0)
 
