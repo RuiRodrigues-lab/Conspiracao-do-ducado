@@ -1,0 +1,503 @@
+<title>Criar Personagem no Ducado</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&display=swap">
+<style>
+/* Layout: uma coluna de leitura (~46rem) com índice dos 9 passos; cores de iluminura moçárabe (índigo, ocre, vermelhão, oliva) sobre um neutro frio */
+:root {
+  --bg: #f4f5f8;
+  --surface: #ffffff;
+  --fg: #1d2033;
+  --muted: #565b74;
+  --line: #d8dbe6;
+  --indigo: #2c3b8f;
+  --indigo-soft: #e6e9f7;
+  --ochre: #a8741c;
+  --vermilion: #b0402c;
+  --olive: #56662a;
+  --display: "Uncial Antiqua", "Palatino Linotype", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --caps: "Alegreya Sans SC", "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12131c; --surface: #1a1c29; --fg: #e8e9f0; --muted: #a6aac0; --line: #2d3044;
+    --indigo: #9aa6ff; --indigo-soft: #23284a; --ochre: #e2b55e; --vermilion: #f08068; --olive: #b9c67c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12131c; --surface: #1a1c29; --fg: #e8e9f0; --muted: #a6aac0; --line: #2d3044;
+  --indigo: #9aa6ff; --indigo-soft: #23284a; --ochre: #e2b55e; --vermilion: #f08068; --olive: #b9c67c;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 1.075rem; line-height: 1.6;
+}
+.wrap {
+  max-width: 48rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 2.5rem 4rem;
+  display: grid; gap: 2.75rem;
+}
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--indigo); }
+a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; border-radius: 4px; }
+.eyebrow {
+  font-family: var(--caps); font-weight: 500; letter-spacing: .08em; text-transform: lowercase;
+  color: var(--muted); font-size: .95rem;
+}
+.term { font-style: italic; }
+
+/* Cabeçalho */
+header { display: grid; gap: 1rem; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1.1; color: var(--indigo); }
+.lead { font-size: 1.2rem; color: var(--fg); max-width: 40rem; }
+.diffs {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 1.1rem 1.25rem; display: grid; gap: .75rem;
+}
+.diffs ol { margin: 0; padding-left: 1.3rem; display: grid; gap: .4rem; }
+.diffs li::marker { color: var(--vermilion); font-weight: 700; }
+.note { color: var(--muted); font-size: .98rem; }
+
+/* Índice dos passos */
+nav.steps { display: flex; flex-wrap: wrap; gap: .5rem; }
+nav.steps a {
+  display: inline-flex; align-items: center; gap: .45rem; text-decoration: none;
+  border: 1px solid var(--line); background: var(--surface); color: var(--fg);
+  border-radius: 999px; padding: .3rem .8rem .3rem .35rem; font-size: .95rem;
+}
+nav.steps a b {
+  font-family: var(--display); font-weight: 400; color: var(--surface); background: var(--indigo);
+  width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; font-size: .9rem;
+}
+nav.steps a:hover { border-color: var(--indigo); }
+
+/* Passos */
+section { display: grid; gap: 1rem; scroll-margin-top: 1rem; }
+.step-head { display: flex; align-items: baseline; gap: .9rem; border-bottom: 1px solid var(--line); padding-bottom: .5rem; }
+.step-num { font-family: var(--display); color: var(--ochre); font-size: 2.4rem; line-height: 1; min-width: 2rem; }
+h2 { font-family: var(--body); font-weight: 700; font-size: 1.5rem; }
+h3 { font-family: var(--caps); font-weight: 700; font-size: 1.15rem; letter-spacing: .03em; color: var(--indigo); }
+ul.plain { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; }
+ul.plain li::marker { color: var(--ochre); }
+
+/* Tabelas */
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: 1rem; }
+th, td { text-align: left; vertical-align: top; padding: .55rem .8rem; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--caps); font-weight: 700; color: var(--muted); letter-spacing: .04em; font-size: .95rem; }
+td:first-child { font-weight: 700; white-space: nowrap; }
+table.compact { min-width: 0; }
+table.compact td:first-child { white-space: normal; }
+.two-col { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); }
+.two-col > * { min-width: 0; }
+.no { color: var(--vermilion); }
+.inline-list { margin: 0; }
+.inline-list b { color: var(--indigo); }
+
+/* Cartões: ancestralidades e comunidades */
+.cards { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 1rem 1.1rem; display: grid; gap: .55rem; align-content: start; min-width: 0;
+}
+.card-top { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+.card-top strong { font-size: 1.12rem; }
+.chip {
+  font-family: var(--caps); font-weight: 700; font-size: .85rem; letter-spacing: .05em;
+  color: var(--indigo); background: var(--indigo-soft); border-radius: 6px; padding: .05rem .5rem;
+}
+.who { color: var(--muted); }
+.feat { border-top: 1px dashed var(--line); padding-top: .55rem; }
+.feat b { color: var(--olive); }
+.qs { font-size: .98rem; display: grid; gap: .2rem; }
+.qs span { font-family: var(--caps); font-weight: 700; color: var(--ochre); font-size: .85rem; letter-spacing: .05em; }
+
+/* Traits */
+.traits { display: flex; flex-wrap: wrap; gap: .5rem; }
+.traits span {
+  font-family: var(--display); font-size: 1.35rem; color: var(--indigo);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  min-width: 3.2rem; text-align: center; padding: .25rem .6rem; font-variant-numeric: tabular-nums;
+}
+.callout { border-left: 3px solid var(--ochre); padding: .2rem 0 .2rem 1rem; }
+
+footer { color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Ducado de Portucale</p>
+    <h1>Criar personagem no Ducado</h1>
+    <p class="lead">A criação de personagem é a do SRD 2.0 (p.4–6). Segue os nove passos abaixo com a ficha e o guia da tua classe à mão.</p>
+    <div class="diffs">
+      <p><strong>Só há duas diferenças:</strong></p>
+      <ol>
+        <li><strong>Ancestralidades:</strong> só há pessoas de vários tamanhos (Giant, Human, Halfling, Dwarf).</li>
+        <li><strong>Comunidades:</strong> têm a cara do Ducado. A mecânica de cada carta fica igual.</li>
+      </ol>
+      <p class="note">Também não há transformações (Werewolf, Vampire, Ghost…), nem na criação nem mais tarde. Lobisomens e almas penadas existem, mas só como criaturas.</p>
+    </div>
+    <p class="note">Precisas de: a ficha e o guia da tua classe, as cartas (subclasse, ancestralidade, comunidade, domínios) e a tabela de equipamento de tier 1. O GM tem tudo.</p>
+  </header>
+
+  <nav class="steps" aria-label="Passos">
+    <a href="#passo-1"><b>1</b>Classe</a>
+    <a href="#passo-2"><b>2</b>Herança</a>
+    <a href="#passo-3"><b>3</b>Traits</a>
+    <a href="#passo-4"><b>4</b>Números</a>
+    <a href="#passo-5"><b>5</b>Equipamento</a>
+    <a href="#passo-6"><b>6</b>Background</a>
+    <a href="#passo-7"><b>7</b>Experiences</a>
+    <a href="#passo-8"><b>8</b>Domínios</a>
+    <a href="#passo-9"><b>9</b>Ligações</a>
+  </nav>
+
+  <section id="passo-1">
+    <div class="step-head"><span class="step-num">1</span><h2>Classe e subclasse</h2></div>
+    <p>Escolhe uma das 13 classes e uma das suas duas subclasses. Se a classe pede uma escolha (por exemplo, as martial stances do Brawler Martial Artist), fá-la agora. O domínio <strong>Dread</strong> está disponível: o Warlock e a Witch dependem dele.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Classe</th><th>No Ducado</th></tr></thead>
+        <tbody>
+          <tr><td>Bard</td><td>Jogral, trovador, contador de lendas</td></tr>
+          <tr><td>Druid</td><td>Sacerdote pagão: mamoas, castros, fontes sagradas. A Igreja não gosta de ti</td></tr>
+          <tr><td>Guardian</td><td>Cavaleiro, escudeiro, Ordem de Santiago</td></tr>
+          <tr><td>Ranger</td><td>Monteiro, caçador, batedor de fronteira (com cão ou falcão)</td></tr>
+          <tr><td>Rogue</td><td>Ladrão, espião, condenado em fuga</td></tr>
+          <tr><td>Seraph</td><td>Alguém que faz milagres. A Igreja ainda não sabe o que fazer contigo. Winged Sentinel: as asas são uma aparição milagrosa</td></tr>
+          <tr><td>Sorcerer</td><td>Magia inata; as pessoas desconfiam</td></tr>
+          <tr><td>Warrior</td><td>Soldado, mercenário, Cavaleira da Machadinha ou de Santiago</td></tr>
+          <tr><td>Wizard</td><td>Estudioso arcano (Salamanca, Córdoba, Souto dos Magos)</td></tr>
+          <tr><td>Assassin</td><td>Matador a soldo ou ex-carrasco; os Poisoners são boticários</td></tr>
+          <tr><td>Brawler</td><td>Lutador de feira (Juggernaut) ou monge guerreiro (Martial Artist)</td></tr>
+          <tr><td>Warlock</td><td>Pacto com um patrono: um santo, uma moura encantada, um ser feérico… Os padres chamam-lhe pacto com o diabo</td></tr>
+          <tr><td>Witch</td><td>Benzedeira ou curandeira (Hedge), ou bruxa (Moon). Cuidado com o bispo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="passo-2">
+    <div class="step-head"><span class="step-num">2</span><h2>Herança: ancestralidade e comunidade</h2></div>
+
+    <h3>Ancestralidade: pessoas de vários tamanhos</h3>
+    <p>Não há elfos, orcs nem outras "raças": são lendas. Escolhe uma destas quatro. As features são as do SRD.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="card-top"><strong>Gigantes</strong><span class="chip">Giant</span></div>
+        <p class="who">Pessoas muito altas. Ignora o "um a três olhos" da carta.</p>
+        <p class="feat"><b>Endurance:</b> +1 Hit Point slot.<br><b>Reach:</b> o que tem alcance Melee passa a Very Close.</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Humanos</strong><span class="chip">Human</span></div>
+        <p class="who">A maioria da gente do Ducado.</p>
+        <p class="feat"><b>High Stamina:</b> +1 Stress slot.<br><b>Adaptability:</b> quando falhas uma rolagem em que usaste uma Experience, podes marcar 1 Stress para rolar de novo.</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>"Hobbits"</strong><span class="chip">Halfling</span></div>
+        <p class="who">Pessoas baixas.</p>
+        <p class="feat"><b>Luckbringer:</b> no início de cada sessão, toda a companhia ganha 1 Hope.<br><b>Internal Compass:</b> quando sai 1 no Hope Die, podes rolá-lo de novo.</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Anões</strong><span class="chip">Dwarf</span></div>
+        <p class="who">Baixos, largos e rijos.</p>
+        <p class="feat"><b>Thick Skin:</b> com dano Minor, podes marcar 2 Stress em vez de 1 HP.<br><b>Increased Fortitude:</b> gasta 3 Hope para reduzir a metade o dano físico que recebes.</p>
+      </article>
+    </div>
+    <p class="callout"><strong>Ancestralidade mista</strong> (regra do SRD): filho de pais de tamanhos diferentes. Ficas com a primeira feature de uma ancestralidade e a segunda da outra. Exemplo: um meio-gigante com Endurance (Giant) e Adaptability (Human).</p>
+
+    <h3>Comunidade: a tua origem no Ducado</h3>
+    <p>Escolhe a carta da comunidade que te criou. <strong>A feature é a da carta, sem mudanças.</strong> O que muda é quem és no Ducado. Responde a uma ou duas perguntas, ou cria as tuas.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="card-top"><strong>Gente de linhagem</strong><span class="chip">Highborne</span></div>
+        <p class="who">Nobres e infanções das casas da Maia, de Baião, de Coimbra, do paço da Duquesa.</p>
+        <p class="feat"><b>Privilege:</b> vantagem para lidar com nobres, negociar preços ou usar o teu nome.</p>
+        <p class="qs"><span>perguntas</span>A que casa nobre pertences, e de que lado está ela entre Mumadona e Gonçalo? · Que dever de família deixaste por cumprir?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente de letras</strong><span class="chip">Loreborne</span></div>
+        <p class="who">Clérigos letrados, copistas, estudantes de Salamanca ou de Córdoba, médicos judeus, sábios moçárabes.</p>
+        <p class="feat"><b>Well-Read:</b> vantagem em rolagens sobre a história, a cultura ou a política de uma pessoa ou lugar importante.</p>
+        <p class="qs"><span>perguntas</span>Onde estudaste, e que livro proibido leste? · Que mestre te ensinou a duvidar?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente de regra</strong><span class="chip">Orderborne</span></div>
+        <p class="who">Criados num mosteiro beneditino, ou nas ordens de Santiago ou da Machadinha.</p>
+        <p class="feat"><b>Dedicated:</b> escreve três ditos ou valores. Uma vez por rest, ao agires segundo um deles, rolas um d20 como Hope Die.<br><span class="term">Ex.: Ora et labora · Quem dá aos pobres empresta a Deus · A palavra dada não volta atrás · Por Santiago!</span></p>
+        <p class="qs"><span>perguntas</span>Em que mosteiro ou ordem foste criado? Porque andas agora com uma companhia sem senhor? · Que juramento te pesa mais?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente da aldeia</strong><span class="chip">Hearthborne</span></div>
+        <p class="who">Lavradores das quintas e aldeias, das vilas da Terra de Santa Maria e do Minho.</p>
+        <p class="feat"><b>Close-Knit:</b> uma vez por long rest, gasta Hope para dar a mesma quantidade de Hope a um aliado em Far.</p>
+        <p class="qs"><span>perguntas</span>Que festa ou romaria da tua terra não perdes por nada? · Quem lá ainda espera que voltes?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Serranos</strong><span class="chip">Ridgeborne</span></div>
+        <p class="who">Pastores, caçadores e passadores das serras: Gerês, Marão, Montemuro, Caramulo.</p>
+        <p class="feat"><b>Steady:</b> vantagem para atravessar penedias e ravinas, andar em terreno difícil e sobreviver no monte.</p>
+        <p class="qs"><span>perguntas</span>De que serra vens, e que criatura vive lá? · Do que é que a tua aldeia nunca fala?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente das neves</strong><span class="chip">Frostborne</span></div>
+        <p class="who">Quem vive nos cumes onde o inverno fecha os caminhos: Estrela, Larouco, as brandas de Castro Laboreiro.</p>
+        <p class="feat"><b>Hardy:</b> sempre que descansas (rest), recuperas 1 Hit Point.</p>
+        <p class="qs"><span>perguntas</span>Que inverno ninguém da tua família esquece? · O que se ouve nos cumes nas noites de nevão?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente do souto</strong><span class="chip">Wildborne</span></div>
+        <p class="who">Carvoeiros, lenhadores e caçadores que vivem nos soutos e carvalhais, perto das mouras e das jãs.</p>
+        <p class="feat"><b>Lightfoot:</b> andas sem fazer barulho; vantagem para te moveres sem seres ouvido.</p>
+        <p class="qs"><span>perguntas</span>Que costume antigo a tua aldeia mantém às escondidas? · Que bosque ou fonte a tua família protege?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente do mar e do rio</strong><span class="chip">Seaborne</span></div>
+        <p class="who">Pescadores da Ribeira de Portucale e da costa, barqueiros do Douro e do Mondego.</p>
+        <p class="feat"><b>Know the Tide:</b> quando rolas com Fear, guardas um token (até ao teu nível). Gasta-os para +1 por token numa action roll. Limpam-se no fim da sessão.</p>
+        <p class="qs"><span>perguntas</span>O que perdeste para o mar, ou para os normandos? · Que tágide ou ondina viste da praia?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente das salinas</strong><span class="chip">Duneborne</span></div>
+        <p class="who">Salineiros e pescadores das dunas e lagunas da costa, de Alavário (Aveiro) para sul.</p>
+        <p class="feat"><b>Oasis:</b> num short rest, tu ou um aliado podem rolar de novo um dado de um downtime move e ficar com o mais alto.</p>
+        <p class="qs"><span>perguntas</span>Quem é dono das salinas onde trabalhavas? · Que barco viste afundar na barra, e o que veio dar à praia?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente das minas</strong><span class="chip">Underborne</span></div>
+        <p class="who">Mineiros das galerias romanas de ouro (Três Minas, perto de Chaves) e das minas de estanho, e quem vive nas galerias dos castros.</p>
+        <p class="feat"><b>Low-Light Living:</b> com pouca luz ou sombra, vantagem para te esconderes, investigares ou reparares em pormenores.</p>
+        <p class="qs"><span>perguntas</span>Que galeria a tua família nunca deixa ninguém abrir? · O que viste lá em baixo que ninguém acredita?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente da estrada</strong><span class="chip">Wanderborne</span></div>
+        <p class="who">Almocreves, mercadores judeus e moçárabes, jograis ambulantes, peregrinos de Santiago.</p>
+        <p class="feat"><b>Nomadic Pack:</b> uma vez por sessão, gasta 1 Hope para tirar do alforge um objeto banal que dê jeito.</p>
+        <p class="qs"><span>perguntas</span>Que caminho percorrias? · Quem deixaste em cada ponta do caminho?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente de fora da lei</strong><span class="chip">Slyborne</span></div>
+        <p class="who">Salteadores da serra, contrabandistas, falsários de relíquias, condenados em fuga.</p>
+        <p class="feat"><b>Scoundrel:</b> vantagem para negociar com criminosos, detetar mentiras ou encontrar um sítio seguro para te esconderes.</p>
+        <p class="qs"><span>perguntas</span>Que crime cometeste (ou te acusaram de cometer), e qual era a pena? · Quem do teu antigo bando ainda te procura?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Gente da fronteira</strong><span class="chip">Warborne</span></div>
+        <p class="who">Quem cresceu nas terras de Coimbra, Viseu e Soure, sempre à espera do próximo raide (mouro ou normando), e os soldados das hostes.</p>
+        <p class="feat"><b>Brave Face:</b> uma vez por sessão, quando terias de marcar Stress, gastas 1 Hope em vez disso.</p>
+        <p class="qs"><span>perguntas</span>Que raide destruiu a tua casa, e de que lado veio? · Quem do outro lado da fronteira te salvou um dia?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Forros</strong><span class="chip">Freeborne</span></div>
+        <p class="who">Escravos libertados (o bispo Rosendo liberta muitos, às vezes comprando-os) e cativos resgatados.</p>
+        <p class="feat"><b>Unbound:</b> uma vez por sessão, quando rolas com Fear, passa a ser com Hope.</p>
+        <p class="qs"><span>perguntas</span>Quem te libertou, e o que lhe deves? · O que fazes com a liberdade que te devolveram?</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><strong>Desenraizados</strong><span class="chip">Reborne</span></div>
+        <p class="who">Quem perdeu a sua comunidade: convertidos, moçárabes fugidos do sul, cativos que voltaram e já não pertencem, expulsos da aldeia.</p>
+        <p class="feat"><b>Found Family:</b> uma vez por rest, gasta 1 Hope para usar uma Experience de um aliado. Se um dia encontrares uma comunidade nova, podes trocar esta carta pela dela.</p>
+        <p class="qs"><span>perguntas</span>Que comunidade perdeste, e porquê? · Que costume dela ainda guardas?</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="passo-3">
+    <div class="step-head"><span class="step-num">3</span><h2>Traits</h2></div>
+    <p>Distribui estes seis valores por Agility, Strength, Finesse, Instinct, Presence e Knowledge, como quiseres:</p>
+    <div class="traits" aria-label="Valores dos traits"><span>+2</span><span>+1</span><span>+1</span><span>+0</span><span>+0</span><span>−1</span></div>
+  </section>
+
+  <section id="passo-4">
+    <div class="step-head"><span class="step-num">4</span><h2>Números da ficha</h2></div>
+    <ul class="plain">
+      <li><strong>Nível 1.</strong> A campanha é toda de tier 1.</li>
+      <li><strong>Evasion</strong> e <strong>HP</strong>: os da tua classe (estão na ficha). Gigantes: +1 HP (Endurance).</li>
+      <li><strong>Stress:</strong> 6 slots. Humanos: +1 (High Stamina).</li>
+      <li><strong>Hope:</strong> começas com 2.</li>
+    </ul>
+  </section>
+
+  <section id="passo-5">
+    <div class="step-head"><span class="step-num">5</span><h2>Equipamento inicial</h2></div>
+    <ul class="plain">
+      <li><strong>Armas</strong> da tabela de tier 1: uma de duas mãos, ou uma principal de uma mão e uma secundária de uma mão. Com <strong>Proficiency 1</strong>, o dano é 1 dado da arma mais o modificador (ex.: d6+1 → 1d6+1).</li>
+      <li><strong>Armadura</strong> da tabela de tier 1. Soma o teu nível (1) aos dois Base Thresholds. O Armor Score é o Base Score da armadura.</li>
+      <li><strong>Inventário:</strong> uma tocha, 15 metros de corda (50 pés), mantimentos e <strong>1 handful de ouro</strong>.</li>
+      <li><strong>Uma poção, à escolha:</strong> <span class="term">Água da fonte santa</span> (Minor Health Potion: limpa 1d4 HP) ou <span class="term">Aguardente do mosteiro</span> (Minor Stamina Potion: limpa 1d4 Stress).</li>
+      <li>O objeto de classe que escolheres no guia da tua classe e, se lançares magias, o objeto que as guarda.</li>
+      <li>Outros objetos, se o GM aprovar.</li>
+    </ul>
+  </section>
+
+  <section id="passo-6">
+    <div class="step-head"><span class="step-num">6</span><h2>Background</h2></div>
+    <p>Responde às perguntas do guia da tua classe e às da tua comunidade (passo 2). Podes mudar as que não servirem, ou deixar o passado por descobrir em jogo.</p>
+  </section>
+
+  <section id="passo-7">
+    <div class="step-head"><span class="step-num">7</span><h2>Experiences</h2></div>
+    <h3>Como funcionam</h3>
+    <ul class="plain">
+      <li>Começas com <strong>duas Experiences a +2</strong>. A campanha é toda de nível 1, por isso ficas com estas duas: escolhe bem.</li>
+      <li><strong>Antes de rolar</strong>, diz que a usas e <strong>gasta 1 Hope</strong>: somas o +2 à rolagem. Serve em action rolls e em reaction rolls.</li>
+      <li>Podes usar <strong>mais do que uma</strong> na mesma rolagem, gastando 1 Hope por cada.</li>
+      <li>Ligam-se a outras regras: a Adaptability dos humanos, a Found Family dos Reborne e o companheiro do Ranger, que tem duas Experiences próprias.</li>
+    </ul>
+
+    <h3>O que é uma boa Experience</h3>
+    <p>Uma palavra ou frase <strong>específica</strong>, que vai servir várias vezes e que diz quem és. Não pode ser tão larga que sirva para tudo, nem dar poderes que a personagem não tem.</p>
+    <div class="table-scroll">
+      <table class="compact">
+        <thead><tr><th>Assim não</th><th>Assim sim</th></tr></thead>
+        <tbody>
+          <tr><td class="no">Lutador</td><td>Lutador de feira</td></tr>
+          <tr><td class="no">Sabe tudo</td><td>Lendas da minha terra</td></tr>
+          <tr><td class="no">Forte</td><td>Carregador do cais</td></tr>
+          <tr><td class="no">Furtivo</td><td>Mãos leves</td></tr>
+          <tr><td class="no">Sortudo</td><td>Não há versão boa: serve para qualquer rolagem</td></tr>
+          <tr><td class="no">Fala com os mortos</td><td>Não serve: os poderes vêm da classe e das cartas</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="callout"><strong>Em jogo:</strong> na feira de Lamego, a almocreve regateia as mulas: Presence + Almocreve. O jogral lembra-se de como se desencanta uma moura: Knowledge + Lendas da minha terra. A barca vira no Douro: reaction roll de Agility + Barqueiro do Douro.</p>
+
+    <h3>Ofícios</h3>
+    <div class="table-scroll">
+      <table class="compact">
+        <thead><tr><th>Experience</th><th>Ajuda a…</th></tr></thead>
+        <tbody>
+          <tr><td>Almocreve</td><td>mulas e cargas, estradas, preços, estalagens</td></tr>
+          <tr><td>Jogral</td><td>atuar, distrair uma multidão, saber canções e notícias</td></tr>
+          <tr><td>Monteiro</td><td>seguir rastos, caçar, armar e desarmar armadilhas</td></tr>
+          <tr><td>Copista</td><td>ler e escrever, reconhecer letras, selos e documentos</td></tr>
+          <tr><td>Canteiro</td><td>trabalhar a pedra, ver onde um muro vai ceder</td></tr>
+          <tr><td>Ferreiro</td><td>reparar e avaliar armas e armaduras</td></tr>
+          <tr><td>Barqueiro do Douro</td><td>barcos, correntes, atravessar rios</td></tr>
+          <tr><td>Pescador da Ribeira</td><td>o mar, nós, nadar, a gente do cais</td></tr>
+          <tr><td>Carregador do cais</td><td>levantar, empurrar, aguentar peso</td></tr>
+          <tr><td>Pastor da serra</td><td>gado, tempo, caminhos do monte, lobos</td></tr>
+          <tr><td>Salineiro</td><td>a costa, as marés, aguentar sol e trabalho duro</td></tr>
+          <tr><td>Mineiro</td><td>galerias, escoramentos, rocha, escuridão</td></tr>
+          <tr><td>Carvoeiro</td><td>o bosque, o fogo, aguentar fumo e calor</td></tr>
+          <tr><td>Benzedeira</td><td>curar com ervas e rezas, mau-olhado, superstições</td></tr>
+          <tr><td>Boticário</td><td>mezinhas e venenos, identificar o que alguém bebeu</td></tr>
+          <tr><td>Escudeiro</td><td>cavalos, armas, etiqueta de paço</td></tr>
+          <tr><td>Contrabandista</td><td>esconder coisas, subornar, caminhos escondidos</td></tr>
+          <tr><td>Soldado da fronteira</td><td>vigiar, formar fileira, perceber um raide a tempo</td></tr>
+          <tr><td>Lutador de feira</td><td>lutar à mão, aguentar pancada, apostas</td></tr>
+          <tr><td>Ex-carrasco</td><td>intimidar, nós e cordas, saber onde dói</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Saberes</h3>
+    <div class="table-scroll">
+      <table class="compact">
+        <thead><tr><th>Experience</th><th>Ajuda a…</th></tr></thead>
+        <tbody>
+          <tr><td>Lendas da minha terra</td><td>reconhecer criaturas e lembrar-se de como se vencem</td></tr>
+          <tr><td>Latim de igreja</td><td>ler documentos, falar com clérigos, missas e rezas</td></tr>
+          <tr><td>Falar árabe</td><td>negociar e conversar com mouros e moçárabes</td></tr>
+          <tr><td>Lei dos godos</td><td>tribunais, contratos, direitos e penas (a lei usada no condado)</td></tr>
+          <tr><td>Ervas e mezinhas</td><td>curar, reconhecer plantas e venenos</td></tr>
+          <tr><td>Relíquias e santos</td><td>distinguir uma relíquia falsa, saber de santos e romarias</td></tr>
+          <tr><td>Costumes do condado</td><td>quem manda onde, famílias nobres, etiqueta</td></tr>
+          <tr><td>Contas de mercador</td><td>preços, moedas, fraudes</td></tr>
+          <tr><td>Estrelas e marés</td><td>orientar-se, prever o tempo</td></tr>
+          <tr><td>Caminhos de Santiago</td><td>peregrinos, albergarias, rotas do norte</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="plain">
+      <li><strong>Terras que conheces como as tuas mãos:</strong> Conhecer o Gerês · Vielas de Portucale · A Ribeira do Douro · A Serra da Estrela · Os pauis do Mondego · A fronteira de Coimbra.</li>
+      <li><strong>Feitio:</strong> Teimoso como uma mula · Língua afiada · Conversa fiada · Desconfiado de nascença · Amigo de toda a gente · Mãos leves · Sangue-frio · Cara de anjo.</li>
+      <li><strong>Ditos:</strong> <span class="term">Devagar se vai ao longe</span> · <span class="term">Não deixo ninguém para trás</span> · <span class="term">Quem vai ao mar avia-se em terra</span> · <span class="term">Quem não arrisca não petisca</span> · <span class="term">A palavra dada não volta atrás</span> · <span class="term">Em terra de cegos, quem tem um olho é rei</span>.</li>
+    </ul>
+
+    <h3>Sugestões por comunidade e por classe</h3>
+    <div class="two-col">
+      <div class="table-scroll">
+        <table class="compact">
+          <thead><tr><th>Comunidade</th><th>Sugestões</th></tr></thead>
+          <tbody>
+            <tr><td>Highborne</td><td>Costumes do condado, Escudeiro</td></tr>
+            <tr><td>Loreborne</td><td>Latim de igreja, Copista</td></tr>
+            <tr><td>Orderborne</td><td>Relíquias e santos, <span class="term">A palavra dada não volta atrás</span></td></tr>
+            <tr><td>Hearthborne</td><td>Amigo de toda a gente, Costumes do condado</td></tr>
+            <tr><td>Ridgeborne</td><td>Pastor da serra, Conhecer o Gerês</td></tr>
+            <tr><td>Frostborne</td><td>Pastor da serra, A Serra da Estrela</td></tr>
+            <tr><td>Wildborne</td><td>Carvoeiro, Lendas da minha terra</td></tr>
+            <tr><td>Seaborne</td><td>Pescador da Ribeira, Estrelas e marés</td></tr>
+            <tr><td>Duneborne</td><td>Salineiro, Contas de mercador</td></tr>
+            <tr><td>Underborne</td><td>Mineiro, Canteiro</td></tr>
+            <tr><td>Wanderborne</td><td>Almocreve, Caminhos de Santiago</td></tr>
+            <tr><td>Slyborne</td><td>Contrabandista, Mãos leves</td></tr>
+            <tr><td>Warborne</td><td>Soldado da fronteira, Sangue-frio</td></tr>
+            <tr><td>Freeborne</td><td>Falar árabe, <span class="term">Quem não arrisca não petisca</span></td></tr>
+            <tr><td>Reborne</td><td>Falar árabe, Desconfiado de nascença</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-scroll">
+        <table class="compact">
+          <thead><tr><th>Classe</th><th>Sugestões</th></tr></thead>
+          <tbody>
+            <tr><td>Bard</td><td>Jogral, Língua afiada</td></tr>
+            <tr><td>Druid</td><td>Lendas da minha terra, Ervas e mezinhas</td></tr>
+            <tr><td>Guardian</td><td>Escudeiro, <span class="term">Não deixo ninguém para trás</span></td></tr>
+            <tr><td>Ranger</td><td>Monteiro, Conhecer o Gerês</td></tr>
+            <tr><td>Rogue</td><td>Mãos leves, Contrabandista</td></tr>
+            <tr><td>Seraph</td><td>Relíquias e santos, Latim de igreja</td></tr>
+            <tr><td>Sorcerer</td><td>Cara de anjo, Desconfiado de nascença</td></tr>
+            <tr><td>Warrior</td><td>Soldado da fronteira, Lutador de feira</td></tr>
+            <tr><td>Wizard</td><td>Copista, Estrelas e marés</td></tr>
+            <tr><td>Assassin</td><td>Ex-carrasco, Boticário</td></tr>
+            <tr><td>Brawler</td><td>Lutador de feira, Carregador do cais</td></tr>
+            <tr><td>Warlock</td><td>Lendas da minha terra, Língua afiada</td></tr>
+            <tr><td>Witch</td><td>Benzedeira, Ervas e mezinhas</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="note"><strong>Companheiro do Ranger</strong> (duas Experiences a +2 para o animal): um cão de gado com <span class="term">Guardar o rebanho</span> e <span class="term">Farejar lobos</span>; um falcão com <span class="term">Caçar do alto</span> e <span class="term">Ver ao longe</span>.</p>
+  </section>
+
+  <section id="passo-8">
+    <div class="step-head"><span class="step-num">8</span><h2>Cartas de domínio</h2></div>
+    <p>Escolhe <strong>duas cartas de nível 1</strong> dos dois domínios da tua classe: uma de cada, ou as duas do mesmo.</p>
+  </section>
+
+  <section id="passo-9">
+    <div class="step-head"><span class="step-num">9</span><h2>Ligações</h2></div>
+    <p>Cada um apresenta a sua personagem: nome, pronomes, aspeto, Experiences e respostas de background. Depois usem as perguntas de "Connections" do guia da classe, e estas, do Ducado:</p>
+    <ul class="plain">
+      <li>Quem da companhia conheceste primeiro, e onde?</li>
+      <li>A quem da companhia deves a vida, ou um favor que ainda não pagaste?</li>
+      <li>Com quem discutes sempre por causa da fé, da magia ou do dinheiro?</li>
+      <li>Quem da companhia guarda um segredo teu?</li>
+    </ul>
+    <p>Propõe pelo menos uma ligação a cada personagem. Aceita as que te interessarem e recusa as outras sem problema.</p>
+  </section>
+
+  <footer>
+    <p>Ducado de Portucale: uma campanha Daggerheart™ Compatible. Não é um produto oficial da Darrington Press nem da Critical Role.</p>
+    <p><strong>Copyright/Attribution:</strong> This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com. There are no previous modifications by others.</p>
+    <p>O SRD 2.0 está em daggerheart.com/srd e é licenciado nos termos da Darrington Press Community Gaming License (darringtonpress.com/license). As regras foram resumidas e traduzidas para português por nós.</p>
+  </footer>
+</div>

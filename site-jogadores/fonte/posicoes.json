@@ -1,0 +1,210 @@
+{
+ "largura": 1350,
+ "altura": 1187,
+ "lugares": [
+  {
+   "nome": "Portucale",
+   "cat": "cidade",
+   "x": 35.7,
+   "y": 44.84
+  },
+  {
+   "nome": "Braga",
+   "cat": "cidade",
+   "x": 41.44,
+   "y": 29.09
+  },
+  {
+   "nome": "Lamego",
+   "cat": "cidade",
+   "x": 59.26,
+   "y": 49.28
+  },
+  {
+   "nome": "Viseu",
+   "cat": "cidade",
+   "x": 55.7,
+   "y": 68.13
+  },
+  {
+   "nome": "Eminio",
+   "cat": "cidade",
+   "x": 39.96,
+   "y": 86.79
+  },
+  {
+   "nome": "Chaves",
+   "cat": "cidade",
+   "x": 71.73,
+   "y": 23.17
+  },
+  {
+   "nome": "Vimaranes",
+   "cat": "vila",
+   "x": 49.85,
+   "y": 35.93
+  },
+  {
+   "nome": "Maia",
+   "cat": "vila",
+   "x": 35.83,
+   "y": 41.31
+  },
+  {
+   "nome": "Vieira do Minho",
+   "cat": "vila",
+   "x": 52.59,
+   "y": 26.86
+  },
+  {
+   "nome": "Terra de Santa Maria",
+   "cat": "vila",
+   "x": 37.66,
+   "y": 55.09
+  },
+  {
+   "nome": "Anégia",
+   "cat": "vila",
+   "x": 46.06,
+   "y": 48.87
+  },
+  {
+   "nome": "Seia",
+   "cat": "vila",
+   "x": 61.27,
+   "y": 78.68
+  },
+  {
+   "nome": "Montemor-o-Velho",
+   "cat": "vila",
+   "x": 32.24,
+   "y": 87.78
+  },
+  {
+   "nome": "Trancoso",
+   "cat": "vila",
+   "x": 72.53,
+   "y": 64.12
+  },
+  {
+   "nome": "Cale",
+   "cat": "vila",
+   "x": 35.5,
+   "y": 45.91
+  },
+  {
+   "nome": "Casconha",
+   "cat": "vila",
+   "x": 49.44,
+   "y": 85.45
+  },
+  {
+   "nome": "Quinta de Azevedo",
+   "cat": "aldeia",
+   "x": 53.56,
+   "y": 46.48
+  },
+  {
+   "nome": "Lourosa",
+   "cat": "aldeia",
+   "x": 54.41,
+   "y": 82.78
+  },
+  {
+   "nome": "S. Pedro do Sul",
+   "cat": "aldeia",
+   "x": 51.55,
+   "y": 63.47
+  },
+  {
+   "nome": "Soure",
+   "cat": "aldeia",
+   "x": 33.64,
+   "y": 92.73
+  },
+  {
+   "nome": "Souto dos Magos",
+   "cat": "aldeia",
+   "x": 51.62,
+   "y": 37.43
+  },
+  {
+   "nome": "Alavário",
+   "cat": "aldeia",
+   "x": 35.23,
+   "y": 67.91
+  },
+  {
+   "nome": "Dume",
+   "cat": "outro",
+   "x": 40.88,
+   "y": 28.2
+  },
+  {
+   "nome": "Citânia de Briteiros",
+   "cat": "outro",
+   "x": 47.62,
+   "y": 31.39
+  },
+  {
+   "nome": "Cête",
+   "cat": "outro",
+   "x": 44.09,
+   "y": 45.72
+  },
+  {
+   "nome": "Arouca",
+   "cat": "outro",
+   "x": 46.75,
+   "y": 55.95
+  },
+  {
+   "nome": "Lorvão",
+   "cat": "outro",
+   "x": 43.29,
+   "y": 84.96
+  },
+  {
+   "nome": "Vacariça",
+   "cat": "outro",
+   "x": 40.49,
+   "y": 78.95
+  },
+  {
+   "nome": "Conímbriga",
+   "cat": "outro",
+   "x": 37.84,
+   "y": 91.39
+  },
+  {
+   "nome": "Moreira de Rei",
+   "cat": "outro",
+   "x": 71.75,
+   "y": 61.53
+  },
+  {
+   "nome": "Penedono",
+   "cat": "outro",
+   "x": 71.68,
+   "y": 55.08
+  },
+  {
+   "nome": "Sernancelhe",
+   "cat": "outro",
+   "x": 68.48,
+   "y": 58.65
+  },
+  {
+   "nome": "Longroiva",
+   "cat": "outro",
+   "x": 76.67,
+   "y": 56.47
+  },
+  {
+   "nome": "Numão",
+   "cat": "outro",
+   "x": 75.1,
+   "y": 51.34
+  }
+ ]
+}

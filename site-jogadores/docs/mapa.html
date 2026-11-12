@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mapa · Ducado de Portucale</title>
+<meta name="description" content="Mapa clicável do Ducado de Portucale por volta de 950, com os lugares e as distâncias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="index.html">Ducado de Portucale</a>
+    <nav class="site-nav" aria-label="Menu principal"><ul><li><a href="index.html">Início</a></li><li><a href="mapa.html" aria-current="page">Mapa</a></li><li><a href="regras.html">Regras</a></li><li><a href="personagem.html">Personagem</a></li><li><a href="lendas.html">Lendas</a></li><li><a href="mesa.html">À mesa</a></li></ul></nav>
+  </div>
+</header>
+<main class="wrap wide">
+  <header class="page-head">
+    <p class="eyebrow">O condado em 950 · do Lima ao Mondego</p>
+    <h1>O mapa do Ducado</h1>
+    <p class="lead">Toca num lugar do mapa para ler o que se sabe dele. As localizações são aproximadas.</p>
+    <nav class="steps plain-links" aria-label="Nesta página">
+      <a href="#mapa">Mapa</a><a href="#lugares">Lugares</a><a href="#distancias">Distâncias</a><a href="#fora">Fora do Ducado</a>
+    </nav>
+  </header>
+
+  <section id="mapa">
+    <div class="filters" role="group" aria-label="Mostrar no mapa">
+      <button type="button" class="filter" data-filtro="todos" aria-pressed="true">Todos</button>
+      <button type="button" class="filter" data-filtro="cidade" aria-pressed="false">Cidades</button>
+      <button type="button" class="filter" data-filtro="vila" aria-pressed="false">Vilas</button>
+      <button type="button" class="filter" data-filtro="aldeia" aria-pressed="false">Aldeias</button>
+      <button type="button" class="filter" data-filtro="outro" aria-pressed="false">Castelos, mosteiros e ruínas</button>
+    </div>
+    <figure class="map-figure">
+      <div class="map">
+        <img src="img/mapa-ducado.png" width="1350" height="1187" alt="Mapa do Ducado de Portucale por volta de 950, do rio Lima ao Mondego, com as cidades, vilas, aldeias, castelos e mosteiros.">
+        <button class="pin" type="button" data-lugar="lugar-portucale" data-cat="cidade" style="left:35.7%;top:44.84%" aria-label="Portucale"></button><button class="pin" type="button" data-lugar="lugar-braga" data-cat="cidade" style="left:41.44%;top:29.09%" aria-label="Braga"></button><button class="pin" type="button" data-lugar="lugar-lamego" data-cat="cidade" style="left:59.26%;top:49.28%" aria-label="Lamego"></button><button class="pin" type="button" data-lugar="lugar-viseu" data-cat="cidade" style="left:55.7%;top:68.13%" aria-label="Viseu"></button><button class="pin" type="button" data-lugar="lugar-eminio" data-cat="cidade" style="left:39.96%;top:86.79%" aria-label="Eminio"></button><button class="pin" type="button" data-lugar="lugar-chaves" data-cat="cidade" style="left:71.73%;top:23.17%" aria-label="Chaves"></button><button class="pin" type="button" data-lugar="lugar-vimaranes" data-cat="vila" style="left:49.85%;top:35.93%" aria-label="Vimaranes"></button><button class="pin" type="button" data-lugar="lugar-maia" data-cat="vila" style="left:35.83%;top:41.31%" aria-label="Maia"></button><button class="pin" type="button" data-lugar="lugar-vieira-do-minho" data-cat="vila" style="left:52.59%;top:26.86%" aria-label="Vieira do Minho"></button><button class="pin" type="button" data-lugar="lugar-terra-de-santa-maria" data-cat="vila" style="left:37.66%;top:55.09%" aria-label="Terra de Santa Maria"></button><button class="pin" type="button" data-lugar="lugar-anegia" data-cat="vila" style="left:46.06%;top:48.87%" aria-label="Anégia"></button><button class="pin" type="button" data-lugar="lugar-seia" data-cat="vila" style="left:61.27%;top:78.68%" aria-label="Seia"></button><button class="pin" type="button" data-lugar="lugar-montemor-o-velho" data-cat="vila" style="left:32.24%;top:87.78%" aria-label="Montemor-o-Velho"></button><button class="pin" type="button" data-lugar="lugar-trancoso" data-cat="vila" style="left:72.53%;top:64.12%" aria-label="Trancoso"></button><button class="pin" type="button" data-lugar="lugar-cale" data-cat="vila" style="left:35.5%;top:45.91%" aria-label="Cale"></button><button class="pin" type="button" data-lugar="lugar-casconha" data-cat="vila" style="left:49.44%;top:85.45%" aria-label="Casconha"></button><button class="pin" type="button" data-lugar="lugar-quinta-de-azevedo" data-cat="aldeia" style="left:53.56%;top:46.48%" aria-label="Quinta de Azevedo"></button><button class="pin" type="button" data-lugar="lugar-lourosa" data-cat="aldeia" style="left:54.41%;top:82.78%" aria-label="Lourosa"></button><button class="pin" type="button" data-lugar="lugar-s-pedro-do-sul" data-cat="aldeia" style="left:51.55%;top:63.47%" aria-label="S. Pedro do Sul"></button><button class="pin" type="button" data-lugar="lugar-soure" data-cat="aldeia" style="left:33.64%;top:92.73%" aria-label="Soure"></button><button class="pin" type="button" data-lugar="lugar-souto-dos-magos" data-cat="aldeia" style="left:51.62%;top:37.43%" aria-label="Souto dos Magos"></button><button class="pin" type="button" data-lugar="lugar-alavario" data-cat="aldeia" style="left:35.23%;top:67.91%" aria-label="Alavário"></button><button class="pin" type="button" data-lugar="lugar-dume" data-cat="outro" style="left:40.88%;top:28.2%" aria-label="Dume"></button><button class="pin" type="button" data-lugar="lugar-citania-de-briteiros" data-cat="outro" style="left:47.62%;top:31.39%" aria-label="Citânia de Briteiros"></button><button class="pin" type="button" data-lugar="lugar-cete" data-cat="outro" style="left:44.09%;top:45.72%" aria-label="Cête"></button><button class="pin" type="button" data-lugar="lugar-arouca" data-cat="outro" style="left:46.75%;top:55.95%" aria-label="Arouca"></button><button class="pin" type="button" data-lugar="lugar-lorvao" data-cat="outro" style="left:43.29%;top:84.96%" aria-label="Lorvão"></button><button class="pin" type="button" data-lugar="lugar-vacarica" data-cat="outro" style="left:40.49%;top:78.95%" aria-label="Vacariça"></button><button class="pin" type="button" data-lugar="lugar-conimbriga" data-cat="outro" style="left:37.84%;top:91.39%" aria-label="Conímbriga"></button><button class="pin" type="button" data-lugar="lugar-moreira-de-rei" data-cat="outro" style="left:71.75%;top:61.53%" aria-label="Moreira de Rei"></button><button class="pin" type="button" data-lugar="lugar-penedono" data-cat="outro" style="left:71.68%;top:55.08%" aria-label="Penedono"></button><button class="pin" type="button" data-lugar="lugar-sernancelhe" data-cat="outro" style="left:68.48%;top:58.65%" aria-label="Sernancelhe"></button><button class="pin" type="button" data-lugar="lugar-longroiva" data-cat="outro" style="left:76.67%;top:56.47%" aria-label="Longroiva"></button><button class="pin" type="button" data-lugar="lugar-numao" data-cat="outro" style="left:75.1%;top:51.34%" aria-label="Numão"></button>
+      </div>
+      <figcaption class="legend"><span>■ Cidade</span><span>● Vila</span><span>• Aldeia</span><span>▲ Castelo, mosteiro ou ruína</span><span>– – Estrada romana</span><span>· · Caminho incerto</span><span>Portucale é a capital</span></figcaption>
+    </figure>
+    <div class="box place-panel" id="painel" aria-live="polite" hidden></div>
+  </section>
+
+  <section id="lugares">
+    <h2 class="section-head">Lugares</h2>
+    <h3>Cidades</h3>
+    <div class="place-list">
+      <article class="card place" id="lugar-portucale" data-cat="cidade">
+        <div class="card-top"><strong>Portucale</strong><span class="chip">Cidade</span></div>
+        <p class="today">Hoje: Porto</p>
+        <p>A capital do Ducado e o porto que lhe deu o nome, na foz do Douro, com um burgo em cada margem. Marinheiros, mercadores, pescadores e almocreves que sobem o rio. Manda a gente do Grande Duque. Normandos na costa, ondinas no Douro e barcos que não voltam.</p>
+        <p class="dist"><span>Distâncias</span>Maia: meio dia (estrada romana) · Terra de Santa Maria: 1 dia (estrada romana) · Braga: 2 dias (estrada romana) · Vimaranes: 2 dias (caminho) · Lamego: 4 dias (caminho, ao longo do Douro) · Eminio: 5 dias (estrada romana)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-portucale">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-braga" data-cat="cidade">
+        <div class="card-top"><strong>Braga</strong><span class="chip">Cidade</span></div>
+        <p class="today">Hoje: Braga</p>
+        <p>A velha Bracara Augusta romana, cidade do bispo Gundisalvo e a mais eclesiástica do Ducado. Clérigos, peregrinos a caminho de Santiago e ladrões de relíquias. Na Fonte do Ídolo, um santuário antigo escavado na rocha, ainda há quem deixe oferendas.</p>
+        <p class="dist"><span>Distâncias</span>Portucale: 2 dias (estrada romana) · Vimaranes: 1 dia (caminho) · Vieira do Minho: 1–2 dias (estrada romana, pela serra) · Chaves: 3–4 dias (estrada romana, pela serra)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-braga">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-lamego" data-cat="cidade">
+        <div class="card-top"><strong>Lamego</strong><span class="chip">Cidade</span></div>
+        <p class="today">Hoje: Lamego</p>
+        <p>Cidade do bispo Ornato, a sul do Douro, entre vinhas e a serra de Montemuro. Almocreves do rio, contrabandistas e viajantes vindos de Viseu. Diz-se que há mouras nos penedos sobre o Douro.</p>
+        <p class="dist"><span>Distâncias</span>Portucale: 4 dias (caminho, ao longo do Douro) · Viseu: 2–3 dias (caminho incerto, pela serra)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-lamego">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-viseu" data-cat="cidade">
+        <div class="card-top"><strong>Viseu</strong><span class="chip">Cidade</span></div>
+        <p class="today">Hoje: Viseu</p>
+        <p>Cidade do interior, perto da fronteira, que sofre com os raides. Governa-a Ufo Ufes, velho e farto. A filha, Santa Senhorinha, faz milagres; o filho, Gervásio, anda a monte. Perto fica a Cava de Viriato, um enorme recinto de terra que se diz do herói lusitano.</p>
+        <p class="dist"><span>Distâncias</span>Lamego: 2–3 dias (caminho incerto, pela serra) · Eminio: 3–4 dias (caminho incerto, pela fronteira)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-viseu">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-eminio" data-cat="cidade">
+        <div class="card-top"><strong>Eminio (Coimbra)</strong><span class="chip">Cidade</span></div>
+        <p class="today">Hoje: Coimbra</p>
+        <p>A cidade do Mondego, sede do Condado de Coimbra e do conde Mônio Guterres. É a última grande cidade antes da fronteira sul: moçárabes, mercadores de Córdoba e espiões dos dois lados.</p>
+        <p class="dist"><span>Distâncias</span>Viseu: 3–4 dias (caminho incerto, pela fronteira) · Portucale: 5 dias (estrada romana) · Casconha: 1½–2 dias (caminho, pelo Mondego e pelo Alva)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-eminio">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-chaves" data-cat="cidade">
+        <div class="card-top"><strong>Chaves</strong><span class="chip">Cidade</span></div>
+        <p class="today">Hoje: Chaves</p>
+        <p>A romana Aquae Flaviae, com a sua ponte e as termas, no limite nordeste do Ducado. Daqui partem e aqui chegam os raides da Galiza e de Leão.</p>
+        <p class="dist"><span>Distâncias</span>Braga: 3–4 dias (estrada romana, pela serra)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-chaves">Ver no mapa</a></p>
+      </article>
+    </div>
+    <h3>Vilas</h3>
+    <div class="place-list">
+      <article class="card place" id="lugar-vimaranes" data-cat="vila">
+        <div class="card-top"><strong>Vimaranes</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Guimarães</p>
+        <p>A corte da Duquesa Mumadona, que manda construir um mosteiro no vale do Ave. Canteiros, nobres a pedir audiência, e no monte por cima da vila um castro com a Fonte da Moura.</p>
+        <p class="dist"><span>Distâncias</span>Portucale: 2 dias (caminho) · Braga: 1 dia (caminho) · Souto dos Magos: meio dia (caminho de serra)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-vimaranes">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-maia" data-cat="vila">
+        <div class="card-top"><strong>Maia</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Maia</p>
+        <p>Terra senhorial a norte de Portucale, de Lovesendo Ramires, que se prepara para casar com Zayra, prima do Califa. Há gente de Córdoba na Maia, e quem não queira o casamento.</p>
+        <p class="dist"><span>Distâncias</span>Portucale: meio dia (estrada romana)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-maia">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-vieira-do-minho" data-cat="vila">
+        <div class="card-top"><strong>Vieira do Minho</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Vieira do Minho</p>
+        <p>Terra de serra entre o Gerês e a Cabreira, onde Ufo Ufes é capitão-general. Pastores e caçadores, lobos e peeiras, olharapos nas penedias e corredores do fado nas noites de lua.</p>
+        <p class="dist"><span>Distâncias</span>Braga: 1–2 dias (estrada romana, pela serra)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-vieira-do-minho">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-terra-de-santa-maria" data-cat="vila">
+        <div class="card-top"><strong>Terra de Santa Maria</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Santa Maria da Feira</p>
+        <p>Terras entre o Douro e o Vouga, com um castelo que guarda a estrada para sul, governadas por Gonçalo Moniz, filho do conde de Eminio. Salteadores na estrada de Portucale a Eminio e soldados de passagem.</p>
+        <p class="dist"><span>Distâncias</span>Portucale: 1 dia (estrada romana) · Alavário: 1½–2 dias (caminho, pela laguna)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-terra-de-santa-maria">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-anegia" data-cat="vila">
+        <div class="card-top"><strong>Anégia</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: perto de Penafiel</p>
+        <p>Sede de território junto ao Tâmega. Os senhores locais andam em guerra uns com os outros, e há salteadores no rio.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-anegia">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-seia" data-cat="vila">
+        <div class="card-top"><strong>Seia</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Seia</p>
+        <p>Sede de território na Serra da Estrela, no limite do domínio cristão. Lobos, frio e olharapos; um castelo de fronteira.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-seia">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-montemor-o-velho" data-cat="vila">
+        <div class="card-top"><strong>Montemor-o-Velho</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Montemor-o-Velho</p>
+        <p>Castelo sobre o Mondego, tomado aos mouros há cerca de um século. Conta-se que mortos sem cabeça guardam as muralhas.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-montemor-o-velho">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-trancoso" data-cat="vila">
+        <div class="card-top"><strong>Trancoso</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Trancoso</p>
+        <p>Um dos castelos da família da Duquesa na fronteira leste, com uma torre moçárabe.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-trancoso">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-cale" data-cat="vila">
+        <div class="card-top"><strong>Cale</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Vila Nova de Gaia</p>
+        <p>O burgo antigo na margem sul do Douro, em frente a Portucale. Contrabando entre as duas margens e normandos que sobem o rio.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-cale">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-casconha" data-cat="vila">
+        <div class="card-top"><strong>Casconha</strong><span class="chip">Vila</span></div>
+        <p class="today">Hoje: Vale do Alva, perto de Arganil</p>
+        <p>Senhorio de fronteira no vale do Alva, a leste de Eminio, vassalo do conde. Mandam Egas Moniz e a mulher, Doria, fartos dos raides que vêm do sul.</p>
+        <p class="dist"><span>Distâncias</span>Eminio: 1½–2 dias (caminho, pelo Mondego e pelo Alva)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-casconha">Ver no mapa</a></p>
+      </article>
+    </div>
+    <h3>Aldeias</h3>
+    <div class="place-list">
+      <article class="card place" id="lugar-quinta-de-azevedo" data-cat="aldeia">
+        <div class="card-top"><strong>Quinta de Azevedo</strong><span class="chip">Aldeia</span></div>
+        <p class="today">Hoje: perto de Baião</p>
+        <p>Senhorio de Ero Baião, vassalo de Portucale, junto ao Douro.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-quinta-de-azevedo">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-lourosa" data-cat="aldeia">
+        <div class="card-top"><strong>Lourosa</strong><span class="chip">Aldeia</span></div>
+        <p class="today">Hoje: Oliveira do Hospital</p>
+        <p>Aldeia com uma igreja moçárabe que tem a data de 912 gravada numa pedra sobre a porta. Moçárabes da fronteira e pastores da Estrela.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-lourosa">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-s-pedro-do-sul" data-cat="aldeia">
+        <div class="card-top"><strong>S. Pedro do Sul</strong><span class="chip">Aldeia</span></div>
+        <p class="today">Hoje: S. Pedro do Sul</p>
+        <p>Aldeia moçárabe com termas romanas, nas terras de Lafões.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-s-pedro-do-sul">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-soure" data-cat="aldeia">
+        <div class="card-top"><strong>Soure</strong><span class="chip">Aldeia</span></div>
+        <p class="today">Hoje: Soure</p>
+        <p>Aldeia moçárabe a sul do Mondego: a fronteira mais exposta, quase terra de ninguém.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-soure">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-souto-dos-magos" data-cat="aldeia">
+        <div class="card-top"><strong>Souto dos Magos</strong><span class="chip">Aldeia</span></div>
+        <p class="today">Hoje: Penha (Guimarães)</p>
+        <p>Um souto de castanheiros na serra a leste de Vimaranes, perto da Penha. Ali vivem os magos de Vimara, o Ruivo.</p>
+        <p class="dist"><span>Distâncias</span>Vimaranes: meio dia (caminho de serra)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-souto-dos-magos">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-alavario" data-cat="aldeia">
+        <div class="card-top"><strong>Alavário</strong><span class="chip">Aldeia</span></div>
+        <p class="today">Hoje: Aveiro</p>
+        <p>Aldeia de salineiros e pescadores na margem da laguna, junto à foz do Vouga. As salinas são da Duquesa Mumadona. Daqui para sul, pelas dunas, vive a gente das salinas; nas rochas da barra há hirãs, e nas noites de maré viva os afogados saem da água.</p>
+        <p class="dist"><span>Distâncias</span>Terra de Santa Maria: 1½–2 dias (caminho, pela laguna)</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-alavario">Ver no mapa</a></p>
+      </article>
+    </div>
+    <h3>Outros lugares</h3>
+    <div class="place-list">
+      <article class="card place" id="lugar-dume" data-cat="outro">
+        <div class="card-top"><strong>Dume</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Dume, junto a Braga</p>
+        <p>Mosteiro antigo fundado por S. Martinho de Dume e sede do bispo Rosendo, famoso por libertar escravos. Monges, libertos, pobres e doentes.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-dume">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-citania-de-briteiros" data-cat="outro">
+        <div class="card-top"><strong>Citânia de Briteiros</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Guimarães</p>
+        <p>Um grande castro antigo perto de Vimaranes, cheio de pedras gravadas e de histórias de mouras.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-citania-de-briteiros">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-cete" data-cat="outro">
+        <div class="card-top"><strong>Cête</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Paredes</p>
+        <p>Mosteiro de S. Pedro, a leste de Portucale. Há monges aqui pelo menos desde 924.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-cete">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-arouca" data-cat="outro">
+        <div class="card-top"><strong>Arouca</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Arouca</p>
+        <p>Mosteiro aos pés da serra da Freita, terra de lobos e das &quot;pedras parideiras&quot;, penedos que largam pedras como quem dá à luz.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-arouca">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-lorvao" data-cat="outro">
+        <div class="card-top"><strong>Lorvão</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Penacova</p>
+        <p>Mosteiro nas serras junto a Coimbra. Diz-se que um abade de Lorvão ajudou a tomar Montemor aos mouros, e que os monges ainda sabem pegar em armas.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-lorvao">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-vacarica" data-cat="outro">
+        <div class="card-top"><strong>Vacariça</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Mealhada</p>
+        <p>Mosteiro com abades desde o início do século, nos caminhos da Bairrada. Ladrões de relíquias rondam por perto.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-vacarica">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-conimbriga" data-cat="outro">
+        <div class="card-top"><strong>Conímbriga</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Condeixa</p>
+        <p>As ruínas de uma grande cidade romana, perto de Eminio. Muralhas, termas e canos antigos.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-conimbriga">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-moreira-de-rei" data-cat="outro">
+        <div class="card-top"><strong>Moreira de Rei</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Moreira de Rei</p>
+        <p>Castelo da fronteira leste, com uma necrópole de sepulturas escavadas na rocha.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-moreira-de-rei">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-penedono" data-cat="outro">
+        <div class="card-top"><strong>Penedono</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Penedono</p>
+        <p>Castelo da fronteira leste, no alto de um penedo.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-penedono">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-sernancelhe" data-cat="outro">
+        <div class="card-top"><strong>Sernancelhe</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Sernancelhe</p>
+        <p>Castelo da fronteira leste, com restos de construções mais antigas.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-sernancelhe">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-longroiva" data-cat="outro">
+        <div class="card-top"><strong>Longroiva</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Longroiva</p>
+        <p>Castelo da fronteira leste, entre o Douro e o Côa.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-longroiva">Ver no mapa</a></p>
+      </article>
+      <article class="card place" id="lugar-numao" data-cat="outro">
+        <div class="card-top"><strong>Numão</strong><span class="chip">Castelo, mosteiro ou ruína</span></div>
+        <p class="today">Hoje: Numão</p>
+        <p>Castelo da fronteira leste, perto do Douro.</p>
+        <p><a href="#mapa" class="ver-no-mapa" data-lugar="lugar-numao">Ver no mapa</a></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="distancias">
+    <h2 class="section-head">Distâncias</h2>
+    <p>A pé fazem-se cerca de 25 km por dia; a cavalo, 40 a 50. Valores aproximados, só para orientar. As estradas romanas (tracejado no mapa) são o caminho mais seguro.</p>
+    <div class="table-scroll">
+      <table class="compact">
+        <thead><tr><th>De → para</th><th class="num">~km</th><th>A pé</th><th>Caminho</th></tr></thead>
+        <tbody>
+          <tr><td>Portucale → Maia</td><td class="num">12</td><td>meio dia</td><td>estrada romana</td></tr>
+          <tr><td>Portucale → Terra de Santa Maria</td><td class="num">30</td><td>1 dia</td><td>estrada romana</td></tr>
+          <tr><td>Portucale → Braga</td><td class="num">55</td><td>2 dias</td><td>estrada romana</td></tr>
+          <tr><td>Portucale → Vimaranes</td><td class="num">55</td><td>2 dias</td><td>caminho</td></tr>
+          <tr><td>Braga → Vimaranes</td><td class="num">25</td><td>1 dia</td><td>caminho</td></tr>
+          <tr><td>Braga → Vieira do Minho</td><td class="num">35</td><td>1–2 dias</td><td>estrada romana, pela serra</td></tr>
+          <tr><td>Braga → Chaves</td><td class="num">85</td><td>3–4 dias</td><td>estrada romana, pela serra</td></tr>
+          <tr><td>Portucale → Lamego</td><td class="num">100</td><td>4 dias</td><td>caminho, ao longo do Douro</td></tr>
+          <tr><td>Lamego → Viseu</td><td class="num">65</td><td>2–3 dias</td><td>caminho incerto, pela serra</td></tr>
+          <tr><td>Viseu → Eminio</td><td class="num">90</td><td>3–4 dias</td><td>caminho incerto, pela fronteira</td></tr>
+          <tr><td>Portucale → Eminio</td><td class="num">120</td><td>5 dias</td><td>estrada romana</td></tr>
+          <tr><td>Vimaranes → Souto dos Magos</td><td class="num">10</td><td>meio dia</td><td>caminho de serra</td></tr>
+          <tr><td>Eminio → Casconha</td><td class="num">40</td><td>1½–2 dias</td><td>caminho, pelo Mondego e pelo Alva</td></tr>
+          <tr><td>Terra de Santa Maria → Alavário</td><td class="num">40</td><td>1½–2 dias</td><td>caminho, pela laguna</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="fora">
+    <h2 class="section-head">Fora do Ducado (mas importa)</h2>
+    <div class="table-scroll">
+      <table class="compact">
+        <thead><tr><th>Lugar</th><th>Porquê</th></tr></thead>
+        <tbody>
+          <tr><td>Santiago de Compostela</td><td>Destino dos peregrinos que atravessam o Ducado</td></tr>
+          <tr><td>Celanova</td><td>Mosteiro na Galiza, ligado ao bispo Rosendo</td></tr>
+          <tr><td>Tui</td><td>Bispado logo a norte do Minho</td></tr>
+          <tr><td>León</td><td>A corte do rei Ramiro II e de Ordonho III</td></tr>
+          <tr><td>Salamanca</td><td>Onde se estuda</td></tr>
+          <tr><td>Córdoba</td><td>Capital do Califado; a melhor escola da Península</td></tr>
+          <tr><td>Tortosa</td><td>Terra da Ordem da Machadinha</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="inner">
+    <p>Ducado de Portucale: uma campanha Daggerheart™ Compatible para a nossa mesa. Não é um produto oficial da Darrington Press nem da Critical Role.</p>
+    <p><strong>Copyright/Attribution:</strong> This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at <a href="https://www.daggerheart.com">https://www.daggerheart.com</a>. There are no previous modifications by others.</p>
+    <p>O SRD 2.0 está em <a href="https://www.daggerheart.com/srd">daggerheart.com/srd</a> e é licenciado nos termos da <a href="https://darringtonpress.com/license">Darrington Press Community Gaming License</a>. As regras foram resumidas e traduzidas para português por nós.</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>
